@@ -15,7 +15,7 @@ const TodoList = (props: ITodoListProps) => {
 				style={styles.container}
 				data={props.data}
 				renderItem={(item: any) => {
-					return <TodoItem data={item.item} />;
+					return <TodoItem testID='todoItem' data={item.item} />;
 				}}
 				keyExtractor={(item, index) => item.id}
 			/>

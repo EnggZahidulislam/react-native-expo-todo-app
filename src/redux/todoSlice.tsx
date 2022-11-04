@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ITodo, STORAGE_KEY } from '../features/todo/models/todo.model';
 import { readFromStorage, storeToStorage } from '../services/asyncStorage.service';
 interface IInitialState {
@@ -26,17 +26,17 @@ export const todoSlice = createSlice({
 			state.isAuthenticated = action.payload;
 		},
 		// Adding new todo;
-		addTodo: (state, action) => {
-			state.todoList = [...state.todoList, { id: new Date().getTime().toString(), task: action.payload.task.trim(), isDone: false }];
+		addTodo: (state, action: PayloadAction<ITodo>) => {
+			state.todoList = [...state.todoList, action.payload];
 			storedInLocalStorage(state);
 		},
 		// delete todo from todoList;
-		deleteTodo: (state, action) => {
-			state.todoList = [...state.todoList.filter((todo) => todo.id != action.payload.id)];
+		deleteTodo: (state, action: PayloadAction<string>) => {
+			state.todoList = [...state.todoList.filter((todo) => todo.id != action.payload)];
 			storedInLocalStorage(state);
 		},
 		// update todo
-		updateTodo: (state, action) => {
+		updateTodo: (state, action: PayloadAction<ITodo>) => {
 			state.todoList = state.todoList.map((todo) => {
 				if (todo.id === action.payload.id) {
 					todo = action.payload;
@@ -64,7 +64,7 @@ export const getTodosFromAsyncStorage = async (): Promise<ITodo[]> => {
 
 /**
  * * Store state in AsyncStorage
- * @param {IInitialState} state 
+ * @param {IInitialState} state
  */
 const storedInLocalStorage = async (state: IInitialState) => {
 	try {

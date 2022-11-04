@@ -5,6 +5,7 @@ import BaseInput from '../../../components/BaseInput';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { addTodo } from '../../../redux/todoSlice';
 import { useDispatch } from 'react-redux';
+import { ITodo } from '../models/todo.model';
 
 /**
  * * AddTodo Component
@@ -12,21 +13,26 @@ import { useDispatch } from 'react-redux';
  */
 const AddTodo = () => {
 	const dispatch = useDispatch();
-	const [task, setTask] = useState('');
+	const [task, setTask] = useState<string>('');
 
 	/**
 	 * * Add new Todo dispatching addTodo action.
 	 */
 	const handleAddTodo = () => {
-		dispatch(addTodo({ task }));
+		const data: ITodo = {
+			id: new Date().getTime().toString(),
+			task: task,
+			isDone: false,
+		};
+		dispatch(addTodo(data));
 		setTask('');
 	};
 
-	const isTaskValid = task.trim();
+	const isTaskValid = true;
 	return (
 		<View style={styles.container}>
-			<BaseInput style={styles.taskInput} placeholder="Write your todo.." value={task} onChangeText={setTask} />
-			<BaseButton style={styles.addButton} disabled={!isTaskValid} onPress={handleAddTodo}>
+			<BaseInput testID="taskInput" style={styles.taskInput} placeholder="Write your todo.." value={task} onChangeText={setTask} />
+			<BaseButton testID="taskAddButton" style={styles.addButton} disabled={!isTaskValid} onPress={handleAddTodo}>
 				<Ionicons name="checkmark-circle" size={30} color={isTaskValid ? 'green' : 'gray'} />
 			</BaseButton>
 		</View>

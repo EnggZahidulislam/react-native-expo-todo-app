@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import TodoList from '../features/todo/components/TodoList';
+import TodoList from '../../features/todo/components/TodoList';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import AddTodo from '../features/todo/components/AddTodo';
+import AddTodo from '../../features/todo/components/AddTodo';
 import { useDispatch, useSelector } from 'react-redux';
-import UpdateTodo from '../features/todo/components/UpdateTodo';
-import { getTodosFromAsyncStorage, initState } from '../redux/todoSlice';
+import UpdateTodo from '../../features/todo/components/UpdateTodo';
+import { getTodosFromAsyncStorage, initState } from '../../redux/todoSlice';
 
 const HomeScreen = () => {
 	const dispatch = useDispatch();

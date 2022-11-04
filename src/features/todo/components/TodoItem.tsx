@@ -19,7 +19,7 @@ const TodoItem = (props: ITodoProps) => {
 	 * * Deleting Todo dispatching deleteTodo action.
 	 */
 	const handleDelete = () => {
-		dispatch(deleteTodo(props.data));
+		dispatch(deleteTodo(props.data.id));
 	};
 
 	/**

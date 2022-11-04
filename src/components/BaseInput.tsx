@@ -10,6 +10,7 @@ interface ITextInputProps {
 	onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 	onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 	value?: string;
+	testID?: string;
 }
 
 /**
@@ -21,6 +22,7 @@ const BaseInput = (props: ITextInputProps) => {
 	return (
 		<View>
 			<TextInput
+				testID={props.testID}
 				textContentType={props.textContentType}
 				placeholder={props.placeholder}
 				style={[styles.input, props.style]}

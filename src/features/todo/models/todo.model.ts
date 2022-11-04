@@ -5,6 +5,7 @@ export interface ITodo {
 }
 export interface ITodoProps {
 	data: ITodo;
+	testID?: string;
 }
 
 export interface ITodoListProps {

@@ -6,6 +6,7 @@ interface IButtonProps {
 	style?: StyleProp<ViewStyle>;
 	children: ReactNode;
 	disabled?: boolean;
+	testID?: string;
 }
 
 /**
@@ -15,7 +16,7 @@ interface IButtonProps {
  */
 const BaseButton = (props: IButtonProps) => {
 	return (
-		<TouchableOpacity style={[styles.button, props.style]} onPress={props.onPress} disabled={props.disabled}>
+		<TouchableOpacity testID={props.testID} style={[styles.button, props.style]} onPress={props.onPress} disabled={props.disabled}>
 			{props.children}
 		</TouchableOpacity>
 	);

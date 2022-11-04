@@ -1,11 +1,11 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import BaseButton from '../components/BaseButton';
+import BaseButton from '../../components/BaseButton';
 import { useNavigation } from '@react-navigation/native';
 import * as LocalAuthentication from 'expo-local-authentication';
 import { useDispatch } from 'react-redux';
-import { authenticateUser } from '../redux/todoSlice';
+import { authenticateUser } from '../../redux/todoSlice';
 
 const AuthScreen = () => {
 	const { navigate } = useNavigation();
@@ -26,7 +26,7 @@ const AuthScreen = () => {
 				<Image resizeMode="contain" style={styles.headerImage} source={require('../assets/imgs/paidy-logo.png')} />
 				<Text style={styles.headerText}>Todo</Text>
 			</View>
-			<BaseButton style={styles.loginButton} onPress={handleLogin}>
+			<BaseButton testID="loginButton" style={styles.loginButton} onPress={handleLogin}>
 				<Text style={styles.buttonText}>Log In</Text>
 			</BaseButton>
 		</SafeAreaView>
