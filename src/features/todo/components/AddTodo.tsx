@@ -21,14 +21,14 @@ const AddTodo = () => {
 	const handleAddTodo = () => {
 		const data: ITodo = {
 			id: new Date().getTime().toString(),
-			task: task,
+			task: task.trim(),
 			isDone: false,
 		};
 		dispatch(addTodo(data));
 		setTask('');
 	};
 
-	const isTaskValid = true;
+	const isTaskValid = task.trim();
 	return (
 		<View style={styles.container}>
 			<BaseInput testID="taskInput" style={styles.taskInput} placeholder="Write your todo.." value={task} onChangeText={setTask} />

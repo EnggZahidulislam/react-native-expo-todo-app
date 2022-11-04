@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import * as LocalAuthentication from 'expo-local-authentication';
 import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux/todoSlice';
-
+const paidyLogoImgSrc = require('../../assets/imgs/paidy-logo.png');
 const AuthScreen = () => {
 	const { navigate } = useNavigation();
 	const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const AuthScreen = () => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.header}>
-				<Image resizeMode="contain" style={styles.headerImage} source={require('../assets/imgs/paidy-logo.png')} />
+				<Image resizeMode="contain" style={styles.headerImage} source={paidyLogoImgSrc} />
 				<Text style={styles.headerText}>Todo</Text>
 			</View>
 			<BaseButton testID="loginButton" style={styles.loginButton} onPress={handleLogin}>
